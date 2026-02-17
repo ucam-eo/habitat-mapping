@@ -77,7 +77,7 @@
         Geospatial foundation models enable data-efficient tree species mapping in temperate montane forests, substantially outperforming conventional satellite-based approaches.
       </p>
       <div class="flex flex-wrap gap-3 mt-6">
-        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full">18 tree species</span>
+        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full">18 species classes</span>
         <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-full">10 m resolution</span>
         <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full">6,200 km&sup2;</span>
         <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-slate-100 text-slate-600 rounded-full">Autonomous Province of Trento</span>
@@ -92,10 +92,10 @@
         <div>
           <h2 class="font-display text-3xl text-slate-900 mb-6">Study Area</h2>
           <p class="text-slate-600 leading-relaxed mb-4">
-            The Autonomous Province of Trento in northern Italy provides a demanding test case for species-level mapping: steep environmental gradients spanning 65&ndash;3,769&nbsp;m elevation, mixed-species stands, and strong phenological variability throughout the year. The dense parcel-level forest inventory provides species composition data for over 100,000 forest parcels.
+            The Autonomous Province of Trento in northern Italy provides a demanding test case for species-level mapping: steep environmental gradients spanning 65&ndash;3,769&nbsp;m elevation, mixed-species stands, and strong phenological variability throughout the year. The dense parcel-level forest inventory provides species composition data for over 83,000 forest parcels.
           </p>
           <p class="text-slate-600 leading-relaxed mb-4">
-            We classify 18 tree species and species groups, including both conifers (<em>Picea abies</em>, <em>Larix decidua</em>, <em>Pinus sylvestris</em>) and broadleaf species (<em>Fagus sylvatica</em>, <em>Castanea sativa</em>, <em>Quercus</em> spp.), capturing the full range of Alpine forest diversity.
+            We classify 18 species and species groups, including both conifers (<em>Picea abies</em>, <em>Larix decidua</em>, <em>Pinus sylvestris</em>) and broadleaf species (<em>Fagus sylvatica</em>, <em>Quercus ilex</em>, <em>Ostrya</em>&ndash;<em>Fraxinus ornus</em>), capturing the full range of Alpine forest diversity.
           </p>
           <p class="text-slate-600 leading-relaxed">
             Bidirectional reflectance distribution function (BRDF) effects from variable illumination, steep slopes, and shadowing make conventional spectral approaches unreliable in mountainous terrain &mdash; exactly the conditions where foundation model embeddings can demonstrate their advantage.
@@ -125,16 +125,16 @@
           <p class="text-sm text-slate-600 leading-relaxed">128-dimensional embeddings from multi-sensor seasonal composites (Sentinel-1 + Sentinel-2), capturing spectral-temporal dynamics at 10&nbsp;m with annual global coverage.</p>
         </div>
         <div class="bg-violet-50/50 rounded-2xl p-6 border border-violet-100">
-          <h3 class="font-semibold text-violet-900 mb-2">AlphaEarth (GSE)</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">Foundation model embeddings from Google's AlphaEarth/GSE system, providing complementary multi-source representations of the Earth's surface.</p>
+          <h3 class="font-semibold text-violet-900 mb-2">AlphaEarth (AEF)</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">64-dimensional embeddings from Google's AlphaEarth Foundations system, encoding multi-source satellite data (Sentinel-1, Sentinel-2, Landsat) with auxiliary targets including LiDAR structure and climate variables.</p>
         </div>
         <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
           <h3 class="font-semibold text-slate-900 mb-2">Sentinel Composites (Baseline)</h3>
           <p class="text-sm text-slate-600 leading-relaxed">Conventional seasonal median composites from Sentinel-1 SAR and Sentinel-2 multispectral imagery &mdash; the standard approach in ecological remote sensing.</p>
         </div>
         <div class="bg-amber-50/50 rounded-2xl p-6 border border-amber-100">
-          <h3 class="font-semibold text-amber-900 mb-2">Label Distillation</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">A novel technique that assigns pixel-level species labels from parcel-level species proportions using prototype-based soft assignment in embedding space, enabling mixed parcels to contribute to training.</p>
+          <h3 class="font-semibold text-amber-900 mb-2">Soft-Label Training</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Pixel-level targets are defined by parcel-level species proportions, enabling mixed parcels to contribute training signal via probabilistic soft targets rather than hard dominant-species assignments.</p>
         </div>
       </div>
 
@@ -295,7 +295,7 @@
         <div class="text-center mb-8">
           <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Output</span>
           <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Wall-to-Wall Species Map</h3>
-          <p class="text-slate-600 max-w-3xl mx-auto">The final species-prediction map across the entire Trentino landscape at 10&nbsp;m resolution, produced using Tessera embeddings and the label distillation pipeline.</p>
+          <p class="text-slate-600 max-w-3xl mx-auto">The final species-prediction map across the entire Trentino landscape at 10&nbsp;m resolution, produced using Tessera embeddings and an MLP classifier trained with soft labels.</p>
         </div>
         <div class="bg-white rounded-2xl p-4 shadow-lg border border-slate-100">
           <img src="assets/images/trentino/map_species_web.jpg" alt="Wall-to-wall tree species map of the Trentino region" class="rounded-xl w-full fig-zoom">
