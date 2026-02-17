@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found &mdash; Habitat Mapping</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 50: '#f0fdf4', 700: '#15803d' },
+            earth: { 50: '#faf8f5' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-earth-50 text-slate-800 font-sans antialiased min-h-screen flex items-center justify-center">
+  <div class="text-center px-6">
+    <p class="text-6xl font-display text-forest-700 mb-4">404</p>
+    <h1 class="text-2xl font-semibold text-slate-900 mb-2">Page not found</h1>
+    <p class="text-slate-500 mb-8">The page you are looking for does not exist or has been moved.</p>
+    <a href="index.html" class="inline-flex items-center px-6 py-3 bg-forest-700 hover:bg-forest-800 text-white font-semibold rounded-xl transition-colors">
+      Back to Home
+    </a>
+  </div>
+</body>
+</html>

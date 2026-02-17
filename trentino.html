@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trentino Species Mapping &mdash; Habitat Mapping</title>
+  <meta name="description" content="High-resolution tree species mapping in the Italian Alps using geospatial foundation model embeddings.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' },
+            earth: { 50: '#faf8f5', 100: '#f5f0e8', 200: '#e8dcc8', 500: '#a08060', 700: '#6b5240', 800: '#4a3728', 900: '#2d2015' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-earth-50 text-slate-800 font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 inset-x-0 z-50 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-forest-700 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="font-display text-lg text-slate-900">Habitat Mapping</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Home</a>
+          <a href="trentino.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Trentino</a>
+          <a href="projects.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Projects</a>
+          <a href="team.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Team</a>
+          <a href="publications.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Publications</a>
+          <a href="about.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">About</a>
+        </div>
+        <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu md:hidden">
+        <div class="py-3 space-y-2 border-t border-slate-100">
+          <a href="index.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Home</a>
+          <a href="trentino.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Trentino</a>
+          <a href="projects.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Projects</a>
+          <a href="team.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Team</a>
+          <a href="publications.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Publications</a>
+          <a href="about.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-16 bg-white border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-2 mb-4">
+        <a href="index.html" class="text-sm text-slate-400 hover:text-slate-600 transition-colors">Home</a>
+        <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-sm text-slate-600">Trentino</span>
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl text-slate-900 mb-4">High-Resolution Species Mapping in the Italian Alps</h1>
+      <p class="text-lg text-slate-500 max-w-3xl leading-relaxed">
+        Geospatial foundation models enable data-efficient tree species mapping in temperate montane forests, substantially outperforming conventional satellite-based approaches.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full">18 tree species</span>
+        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-indigo-50 text-indigo-700 rounded-full">10 m resolution</span>
+        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full">6,200 km&sup2;</span>
+        <span class="inline-flex items-center text-xs font-medium px-3 py-1.5 bg-slate-100 text-slate-600 rounded-full">Autonomous Province of Trento</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Area -->
+  <section class="py-20 bg-earth-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="fade-section grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-display text-3xl text-slate-900 mb-6">Study Area</h2>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            The Autonomous Province of Trento in northern Italy provides a demanding test case for species-level mapping: steep environmental gradients spanning 65&ndash;3,769&nbsp;m elevation, mixed-species stands, and strong phenological variability throughout the year. The dense parcel-level forest inventory provides species composition data for over 100,000 forest parcels.
+          </p>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            We classify 18 tree species and species groups, including both conifers (<em>Picea abies</em>, <em>Larix decidua</em>, <em>Pinus sylvestris</em>) and broadleaf species (<em>Fagus sylvatica</em>, <em>Castanea sativa</em>, <em>Quercus</em> spp.), capturing the full range of Alpine forest diversity.
+          </p>
+          <p class="text-slate-600 leading-relaxed">
+            Bidirectional reflectance distribution function (BRDF) effects from variable illumination, steep slopes, and shadowing make conventional spectral approaches unreliable in mountainous terrain &mdash; exactly the conditions where foundation model embeddings can demonstrate their advantage.
+          </p>
+        </div>
+        <div>
+          <img src="assets/images/trentino/map_species_alt_web.jpg" alt="Map of tree species across the Trentino region" class="rounded-2xl shadow-lg fig-zoom">
+          <p class="text-xs text-slate-400 mt-3 text-center">Wall-to-wall species predictions across the Trentino landscape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methods Overview -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="fade-section text-center mb-14">
+        <h2 class="font-display text-3xl text-slate-900 mb-4">Methods</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          We compare two globally pre-trained foundation-model embeddings against conventional Sentinel-1/2 composites, evaluating performance along five experimental axes.
+        </p>
+      </div>
+
+      <div class="fade-section grid sm:grid-cols-2 gap-6 mb-14">
+        <div class="bg-indigo-50/50 rounded-2xl p-6 border border-indigo-100">
+          <h3 class="font-semibold text-indigo-900 mb-2">Tessera</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">128-dimensional embeddings from multi-sensor seasonal composites (Sentinel-1 + Sentinel-2), capturing spectral-temporal dynamics at 10&nbsp;m with annual global coverage.</p>
+        </div>
+        <div class="bg-violet-50/50 rounded-2xl p-6 border border-violet-100">
+          <h3 class="font-semibold text-violet-900 mb-2">AlphaEarth (GSE)</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Foundation model embeddings from Google's AlphaEarth/GSE system, providing complementary multi-source representations of the Earth's surface.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+          <h3 class="font-semibold text-slate-900 mb-2">Sentinel Composites (Baseline)</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Conventional seasonal median composites from Sentinel-1 SAR and Sentinel-2 multispectral imagery &mdash; the standard approach in ecological remote sensing.</p>
+        </div>
+        <div class="bg-amber-50/50 rounded-2xl p-6 border border-amber-100">
+          <h3 class="font-semibold text-amber-900 mb-2">Label Distillation</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">A novel technique that assigns pixel-level species labels from parcel-level species proportions using prototype-based soft assignment in embedding space, enabling mixed parcels to contribute to training.</p>
+        </div>
+      </div>
+
+      <div class="fade-section bg-earth-50 rounded-2xl p-8 border border-earth-200">
+        <h3 class="font-semibold text-slate-900 mb-4 text-center">Five Experimental Axes</h3>
+        <div class="grid sm:grid-cols-5 gap-4 text-center">
+          <div>
+            <div class="w-10 h-10 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-sm">1</div>
+            <p class="text-xs text-slate-600 font-medium">Classification accuracy &amp; ecological structure</p>
+          </div>
+          <div>
+            <div class="w-10 h-10 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-sm">2</div>
+            <p class="text-xs text-slate-600 font-medium">Label efficiency as data is reduced</p>
+          </div>
+          <div>
+            <div class="w-10 h-10 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-sm">3</div>
+            <p class="text-xs text-slate-600 font-medium">Robustness to label impurity</p>
+          </div>
+          <div>
+            <div class="w-10 h-10 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-sm">4</div>
+            <p class="text-xs text-slate-600 font-medium">Contribution of ancillary covariates</p>
+          </div>
+          <div>
+            <div class="w-10 h-10 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-sm">5</div>
+            <p class="text-xs text-slate-600 font-medium">Cross-year temporal transfer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Results -->
+  <section class="py-20 bg-earth-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="fade-section text-center mb-16">
+        <h2 class="font-display text-3xl sm:text-4xl text-slate-900 mb-4">Key Results</h2>
+      </div>
+
+      <!-- Result 1: FM outperform baselines -->
+      <div class="fade-section mb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Result 1</span>
+            <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Foundation Models Substantially Outperform Satellite Composites</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Both Tessera and AlphaEarth embeddings achieve significantly higher classification accuracy than conventional Sentinel-1/2 composites across all metrics. Performance gains are largely driven by embedding quality rather than downstream model capacity.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              A compact neural network (MLP) provides the best results, outperforming Random Forest while matching deeper architectures &mdash; suggesting the embeddings already encode rich, species-discriminative structure.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <img src="assets/images/trentino/model_comparison_bars.png" alt="Bar chart comparing classification accuracy across representations and classifiers" class="rounded-xl shadow-md fig-zoom bg-white p-2">
+            <p class="text-xs text-slate-400 text-center">Classification performance across representations and classifier types. Foundation model embeddings (Tessera, AlphaEarth) vs conventional Sentinel composites.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result 2: Embedding structure reflects ecology -->
+      <div id="embeddings" class="fade-section mb-20">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Result 2</span>
+          <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Embedding Structure Reflects Ecological Organisation</h3>
+          <p class="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            UMAP projections of foundation model embeddings reveal that the latent space naturally separates species along ecologically meaningful axes. Conifers and broadleaves form distinct macro-clusters, while individual species and genera occupy well-defined regions &mdash; all without any ecological supervision during pre-training.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_species_tessera_web.jpg" alt="UMAP colored by species (Tessera)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Species &mdash; Tessera 2018</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_genus_tessera_web.jpg" alt="UMAP colored by genus (Tessera)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Genus &mdash; Tessera 2018</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_conifer_broadleaf_tessera_web.jpg" alt="UMAP colored by conifer/broadleaf (Tessera)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Conifer vs Broadleaf &mdash; Tessera 2018</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_species_alphaearth_web.jpg" alt="UMAP colored by species (AlphaEarth)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Species &mdash; AlphaEarth 2018</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_conifer_broadleaf_alphaearth_web.jpg" alt="UMAP colored by conifer/broadleaf (AlphaEarth)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Conifer vs Broadleaf &mdash; AlphaEarth 2018</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <img src="assets/images/trentino/umap_elevation_tessera_web.jpg" alt="UMAP colored by elevation (Tessera)" class="rounded-lg fig-zoom w-full">
+            <p class="text-xs text-slate-500 mt-2 text-center">Elevation gradient &mdash; Tessera 2018</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result 3: Label efficiency -->
+      <div class="fade-section mb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1">
+            <img src="assets/images/trentino/fraction_curves_combined.png" alt="Label efficiency curves showing performance vs training data fraction" class="rounded-xl shadow-md fig-zoom bg-white p-2">
+            <p class="text-xs text-slate-400 mt-3 text-center">Classification performance as training data is progressively reduced.</p>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Result 3</span>
+            <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Foundation Models Are Radically More Label-Efficient</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              When training data is progressively reduced, foundation model embeddings degrade far more gracefully than conventional composites. Tessera and AlphaEarth maintain strong performance with a fraction of the labels that baselines require.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              This is critical for practical applications where labelled ecological data is expensive, sparse, and regionally uneven &mdash; opening the door to species mapping in data-poor regions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result 4: Robustness to label impurity -->
+      <div class="fade-section mb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Result 4</span>
+            <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Robust to Label Impurity</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Classification accuracy remains stable even when moderately impure (mixed-species) parcels are included in the training data. This allows the full forest inventory to be utilised without aggressive filtering, maximising data volume.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              Furthermore, incorporating parcel-level species fractions as soft labels during training helps the model extract information from mixed stands, improving performance for rarer species that typically occur in mixed parcels.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <img src="assets/images/trentino/purity_metrics_compare.png" alt="Classification performance across different label purity thresholds" class="rounded-xl shadow-md fig-zoom bg-white p-2">
+            <p class="text-xs text-slate-400 text-center">Performance across label purity thresholds for different representations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result 5: Temporal transfer -->
+      <div class="fade-section mb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1">
+            <img src="assets/images/trentino/temporal_transfer.png" alt="Cross-year temporal transfer performance" class="rounded-xl shadow-md fig-zoom bg-white p-2">
+            <p class="text-xs text-slate-400 mt-3 text-center">Classification performance when models trained in one year are applied to subsequent years.</p>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Result 5</span>
+            <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Temporal Transfer: The Key Challenge</h3>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Cross-year transfer reveals notable performance degradation, particularly for rare species. Interannual variability in phenology and satellite acquisition conditions affects model transferability across years.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              This highlights the importance of multi-year training strategies and temporal alignment in operational forest monitoring &mdash; a key direction for future work.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Map -->
+      <div class="fade-section">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold text-forest-700 tracking-widest uppercase">Output</span>
+          <h3 class="font-display text-2xl text-slate-900 mt-2 mb-4">Wall-to-Wall Species Map</h3>
+          <p class="text-slate-600 max-w-3xl mx-auto">The final species-prediction map across the entire Trentino landscape at 10&nbsp;m resolution, produced using Tessera embeddings and the label distillation pipeline.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 shadow-lg border border-slate-100">
+          <img src="assets/images/trentino/map_species_web.jpg" alt="Wall-to-wall tree species map of the Trentino region" class="rounded-xl w-full fig-zoom">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Takeaways -->
+  <section class="py-20 bg-forest-800">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="fade-section text-center mb-12">
+        <h2 class="font-display text-3xl text-white mb-4">Key Takeaways</h2>
+      </div>
+      <div class="fade-section grid sm:grid-cols-2 gap-6">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h4 class="font-semibold text-white mb-2">Embeddings encode species-discriminative information</h4>
+          <p class="text-sm text-white/70 leading-relaxed">Foundation model representations capture rich ecological structure aligned with functional and taxonomic groupings, without any ecological supervision.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h4 class="font-semibold text-white mb-2">The bottleneck shifts from features to labels</h4>
+          <p class="text-sm text-white/70 leading-relaxed">Foundation models reduce the need for hand-crafted features. The primary challenge becomes the availability, quality, and temporal alignment of reference data.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h4 class="font-semibold text-white mb-2">Simple classifiers suffice</h4>
+          <p class="text-sm text-white/70 leading-relaxed">A compact MLP matches or exceeds deeper models when applied to FM embeddings, suggesting the heavy lifting is done by the pre-trained representations.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h4 class="font-semibold text-white mb-2">Scalable to new regions</h4>
+          <p class="text-sm text-white/70 leading-relaxed">The data-efficient pipeline can be adapted to new study areas with limited local labels &mdash; opening the door to global species-level habitat mapping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper & Code CTA -->
+  <section class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="font-display text-2xl text-slate-900 mb-4">Read the Full Paper</h3>
+      <p class="text-slate-600 mb-8 max-w-2xl mx-auto">
+        <em>Geospatial foundation models enable data-efficient tree species mapping in temperate montane forests.</em><br>
+        Ball, Wicklein, Feng, Knezevic, Atzberger, Dalponte &amp; Coomes.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="publications.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-forest-600 hover:bg-forest-700 text-white font-semibold rounded-xl transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          View Publication
+        </a>
+        <a href="https://github.com/PatBall1/trentino-trees" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-8 py-3.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-semibold rounded-xl transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          View Code on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-forest-700 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="font-display text-lg text-white">Habitat Mapping</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+            Using geospatial foundation models to map Earth's habitats at unprecedented resolution. A collaboration between the Department of Plant Sciences and the Department of Computer Science and Technology, University of Cambridge.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Pages</h4>
+          <ul class="space-y-2">
+            <li><a href="trentino.html" class="text-sm text-slate-400 hover:text-white transition-colors">Trentino Results</a></li>
+            <li><a href="projects.html" class="text-sm text-slate-400 hover:text-white transition-colors">Projects</a></li>
+            <li><a href="team.html" class="text-sm text-slate-400 hover:text-white transition-colors">Team</a></li>
+            <li><a href="publications.html" class="text-sm text-slate-400 hover:text-white transition-colors">Publications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Links</h4>
+          <ul class="space-y-2">
+            <li><a href="https://www.plantsci.cam.ac.uk/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">Plant Sciences, Cambridge</a></li>
+            <li><a href="https://www.cst.cam.ac.uk/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">Computer Science, Cambridge</a></li>
+            <li><a href="https://github.com/PatBall1/trentino-trees" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-12 pt-8 text-center">
+        <p class="text-xs text-slate-500">&copy; 2025&ndash;2026 University of Cambridge. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

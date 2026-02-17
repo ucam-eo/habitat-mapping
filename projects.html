@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects &mdash; Habitat Mapping</title>
+  <meta name="description" content="Our portfolio of habitat mapping projects spanning the Italian Alps, Latin America, the UK, and the global tropics.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' },
+            earth: { 50: '#faf8f5', 100: '#f5f0e8', 200: '#e8dcc8', 500: '#a08060', 700: '#6b5240', 800: '#4a3728', 900: '#2d2015' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"DM Serif Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-earth-50 text-slate-800 font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav class="nav-glass fixed top-0 inset-x-0 z-50 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-forest-700 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="font-display text-lg text-slate-900">Habitat Mapping</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Home</a>
+          <a href="trentino.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Trentino</a>
+          <a href="projects.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Projects</a>
+          <a href="team.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Team</a>
+          <a href="publications.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">Publications</a>
+          <a href="about.html" class="nav-link text-sm font-medium text-slate-600 hover:text-forest-700 pb-0.5 transition-colors">About</a>
+        </div>
+        <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu md:hidden">
+        <div class="py-3 space-y-2 border-t border-slate-100">
+          <a href="index.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Home</a>
+          <a href="trentino.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Trentino</a>
+          <a href="projects.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Projects</a>
+          <a href="team.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Team</a>
+          <a href="publications.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">Publications</a>
+          <a href="about.html" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-forest-50 rounded-lg">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-16 bg-white border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-2 mb-4">
+        <a href="index.html" class="text-sm text-slate-400 hover:text-slate-600 transition-colors">Home</a>
+        <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-sm text-slate-600">Projects</span>
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl text-slate-900 mb-4">Projects</h1>
+      <p class="text-lg text-slate-500 max-w-3xl leading-relaxed">
+        From species-level forest mapping in the Alps to continent-scale habitat classification in the tropics. Our work spans regional to global scales, partnering with ecological networks and conservation organisations worldwide.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Trentino -->
+      <div id="trentino" class="fade-section mb-16">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="md:flex">
+            <div class="md:w-2/5">
+              <img src="assets/images/trentino/map_species_web.jpg" alt="Trentino species map" class="w-full h-64 md:h-full object-cover">
+            </div>
+            <div class="p-8 md:w-3/5">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-completed text-xs font-semibold px-2.5 py-1 rounded-full">Completed</span>
+                <span class="text-xs text-slate-400">Trentino, Italy</span>
+              </div>
+              <h2 class="font-display text-2xl text-slate-900 mb-3">High-Resolution Species Mapping in the Italian Alps</h2>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Our flagship project evaluates two geospatial foundation models (Tessera and AlphaEarth) for tree species classification across 6,200 km&sup2; of the Autonomous Province of Trento. Using parcel-level forest inventories as reference data, we demonstrate that FM embeddings substantially outperform conventional satellite approaches, achieving higher accuracy with far fewer training labels while preserving ecologically meaningful structure aligned with functional and taxonomic groupings.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">18 species</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">10 m resolution</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Tessera &amp; AlphaEarth</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Label distillation</span>
+              </div>
+              <div class="text-sm text-slate-500 mb-4">
+                <strong class="text-slate-700">Team:</strong> James Ball, Jana Wicklein, Zhengpeng Feng, Jovana Knezevic, Clement Atzberger, Michele Dalponte, David Coomes
+              </div>
+              <a href="trentino.html" class="inline-flex items-center text-forest-700 font-semibold text-sm hover:text-forest-800">
+                View full results
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latin America -->
+      <div id="latin-america" class="fade-section mb-16">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="md:flex">
+            <div class="md:w-2/5 bg-gradient-to-br from-forest-700 via-emerald-800 to-teal-900 flex items-center justify-center min-h-[16rem]">
+              <div class="text-center p-8">
+                <svg class="w-20 h-20 text-white/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white/50 font-medium">Jan &ndash; Jul 2026</p>
+              </div>
+            </div>
+            <div class="p-8 md:w-3/5">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+                <span class="text-xs text-slate-400">Neotropics</span>
+              </div>
+              <h2 class="font-display text-2xl text-slate-900 mb-3">Continental Vegetation Mapping of Latin America</h2>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Integrating Tessera foundation model embeddings with the SynTreeSys network &mdash; approximately 10,000 high-quality tropical forest plots spanning all major Neotropical biomes &mdash; to produce the first harmonised, AI-driven vegetation and habitat map of Latin America. The project will cover Amazon, Cerrado, Atlantic Forest, Chaco, Andes, and Mesoamerican biomes at 10&ndash;30&nbsp;m resolution, aligned with IUCN habitat classification and WWF ecoregions.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">SynTreeSys network</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">10,000+ plots</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">IUCN aligned</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Google Earth Engine</span>
+              </div>
+              <div class="text-sm text-slate-500">
+                <strong class="text-slate-700">Team:</strong> James Ball, David Coomes, Adriane Esquivel-Muelbert, Toby Pennington, Karl Dexter
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amazon Functional Ecology -->
+      <div id="amazon" class="fade-section mb-16">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="md:flex">
+            <div class="md:w-2/5 bg-gradient-to-br from-emerald-900 via-green-800 to-lime-900 flex items-center justify-center min-h-[16rem]">
+              <div class="text-center p-8">
+                <svg class="w-20 h-20 text-white/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <p class="text-white/50 font-medium">Planned</p>
+              </div>
+            </div>
+            <div class="p-8 md:w-3/5">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+                <span class="text-xs text-slate-400">Amazon Basin</span>
+              </div>
+              <h2 class="font-display text-2xl text-slate-900 mb-3">Amazon Functional Ecology at Continental Scale</h2>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Three interconnected ecological questions powered by foundation model embeddings: (1) Can embeddings recover continental-scale functional composition, mapping community-weighted wood density, SLA, and seed mass continuously at 10&ndash;30&nbsp;m? (2) Are ecosystems discrete states or continuous manifolds in embedding space &mdash; revisiting the century-old Clements vs. Gleason debate with modern AI? (3) Do forests shift predictably along functional axes under disturbance, offering early warning signals for tipping points?
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Functional traits</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Ecosystem states</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Tipping points</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Hans ter Steege data</span>
+              </div>
+              <div class="text-sm text-slate-500">
+                <strong class="text-slate-700">Team:</strong> James Ball, David Coomes, with collaborators from BIEN, SynTreeSys
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UK Landscape Recovery -->
+      <div id="uk-landscape" class="fade-section mb-16">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="md:flex">
+            <div class="md:w-2/5 bg-gradient-to-br from-teal-800 via-cyan-800 to-sky-900 flex items-center justify-center min-h-[16rem]">
+              <div class="text-center p-8">
+                <svg class="w-20 h-20 text-white/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                <p class="text-white/50 font-medium">In Progress</p>
+              </div>
+            </div>
+            <div class="p-8 md:w-3/5">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-in-progress text-xs font-semibold px-2.5 py-1 rounded-full">In Progress</span>
+                <span class="text-xs text-slate-400">Cumbria, UK</span>
+              </div>
+              <h2 class="font-display text-2xl text-slate-900 mb-3">Mapping Landscape Recovery in Cumbria</h2>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Establishing baseline habitat maps across approximately 86,500 hectares encompassing Cumbria&rsquo;s five Landscape Recovery schemes, the Cumbria Connect initiative, and National Trust estates. Using Tessera to classify natural, semi-natural, and farmed habitats from 2017 to 2025, providing essential reference points for tracking 20&ndash;30 year restoration outcomes. Cumbria accounts for roughly 20% of the total Landscape Recovery area nationally.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">86,500 hectares</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Landscape Recovery</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">CLR funded</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">National Trust</span>
+              </div>
+              <div class="text-sm text-slate-500">
+                <strong class="text-slate-700">Team:</strong> Amandine Debus, Barbara Neto-Bradley, Jess Williams, David Coomes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cairngorms -->
+      <div id="cairngorms" class="fade-section mb-16">
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="md:flex">
+            <div class="md:w-2/5 bg-gradient-to-br from-violet-800 via-purple-800 to-fuchsia-900 flex items-center justify-center min-h-[16rem]">
+              <div class="text-center p-8">
+                <svg class="w-20 h-20 text-white/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <p class="text-white/50 font-medium">In Progress</p>
+              </div>
+            </div>
+            <div class="p-8 md:w-3/5">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-in-progress text-xs font-semibold px-2.5 py-1 rounded-full">In Progress</span>
+                <span class="text-xs text-slate-400">Cairngorms, Scotland</span>
+              </div>
+              <h2 class="font-display text-2xl text-slate-900 mb-3">Evaluating Rewilding in the Cairngorms</h2>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Supporting the Cairngorm Connect initiative &mdash; an ambitious 200-year vision for rewilding across the Cairngorms &mdash; by integrating Tessera embeddings with Scotland&rsquo;s National LIDAR Programme. The combination of continuous spectral-temporal monitoring with structural 3D data enables automated assessment of ecosystem recovery trajectories, distinguishing between spectrally similar but structurally distinct habitats.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Tessera + LiDAR</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Rewilding</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">CLR funded</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">3D habitat mapping</span>
+              </div>
+              <div class="text-sm text-slate-500">
+                <strong class="text-slate-700">Team:</strong> Amandine Debus, Barbara Neto-Bradley, Jess Williams, David Coomes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smaller projects row -->
+      <div class="fade-section grid md:grid-cols-2 gap-8 mb-16">
+
+        <!-- Spain / NZ -->
+        <div id="spain-nz" class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+            <span class="text-xs text-slate-400">Spain &amp; New Zealand</span>
+          </div>
+          <h3 class="font-display text-xl text-slate-900 mb-3">Change Detection with Field Datasets</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Leveraging outstanding field datasets from Spain and New Zealand to evaluate Tessera&rsquo;s ability to detect gradual ecological changes (ecosystem recovery) and abrupt disturbances (fire, storm damage). A fundamental test of foundation model sensitivity to temporal ecological dynamics.
+          </p>
+          <div class="text-sm text-slate-500">
+            <strong class="text-slate-700">Lead:</strong> Jovana Knezevic
+          </div>
+        </div>
+
+        <!-- Embeddings vs Ecoregions -->
+        <div id="ecoregions" class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+            <span class="text-xs text-slate-400">Global</span>
+          </div>
+          <h3 class="font-display text-xl text-slate-900 mb-3">Embeddings vs Ecoregions</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Quantifying how effectively different landcover types separate within Tessera&rsquo;s latent embedding space using Jung&rsquo;s 47 IUCN habitat types. Testing whether biome clustering, habitat integrity, and compositional coherence are encoded in the learned representations, using Generalised Dissimilarity Modelling.
+          </p>
+          <div class="text-sm text-slate-500">
+            <strong class="text-slate-700">Lead:</strong> Jovana Knezevic
+          </div>
+        </div>
+
+        <!-- Global Habitat Map -->
+        <div id="global" class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+            <span class="text-xs text-slate-400">Global</span>
+          </div>
+          <h3 class="font-display text-xl text-slate-900 mb-3">Global Habitat Map</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            The ultimate goal: a globally consistent habitat map by end of 2026. Powered by the Global Plot Alliance &mdash; assembling a comprehensive database of vegetation plots worldwide, including access to 3.3 million plots through SPlot &mdash; and combining foundation-model embeddings with Michael&rsquo;s implicit labelling approach for scalable habitat classification.
+          </p>
+          <div class="text-sm text-slate-500">
+            <strong class="text-slate-700">Team:</strong> David Coomes, Lucy Watson, and the Global Plot Alliance
+          </div>
+        </div>
+
+        <!-- UK National Habitat Map -->
+        <div id="uk-national" class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="badge-planned text-xs font-semibold px-2.5 py-1 rounded-full">Planned</span>
+            <span class="text-xs text-slate-400">United Kingdom</span>
+          </div>
+          <h3 class="font-display text-xl text-slate-900 mb-3">UK National Habitat Condition Mapping</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Developing the next generation of habitat condition mapping systems for the UK, integrating Tessera with EUNIS classification standards. Moving beyond broad land cover categories to fine-scale habitat condition monitoring &mdash; distinguishing, for example, between overgrazed and undergrazed grasslands. Partnership with UK-CEH and DEFRA.
+          </p>
+          <div class="text-sm text-slate-500">
+            <strong class="text-slate-700">Timeline:</strong> Postdoc starting March&ndash;April 2026, completion by May 2027
+          </div>
+        </div>
+      </div>
+
+      <!-- Global Plot Alliance callout -->
+      <div class="fade-section bg-forest-800 rounded-2xl p-10 text-center">
+        <h3 class="font-display text-2xl text-white mb-4">The Global Plot Alliance</h3>
+        <p class="text-forest-100/80 max-w-3xl mx-auto leading-relaxed mb-6">
+          To take full advantage of foundation models, we need expertly curated ground-truth datasets. We are building a global alliance of vegetation plot networks &mdash; assembling millions of survey records from botanists, ecologists, and foresters worldwide &mdash; to provide the reference data that will power the next generation of AI-driven habitat maps.
+        </p>
+        <p class="text-forest-200/60 text-sm">
+          Partners include SPlot (3.3M plots), SynTreeSys, BIEN, UNEP-WCMC, and others.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-forest-700 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="font-display text-lg text-white">Habitat Mapping</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+            Using geospatial foundation models to map Earth's habitats at unprecedented resolution. A collaboration between the Department of Plant Sciences and the Department of Computer Science and Technology, University of Cambridge.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Pages</h4>
+          <ul class="space-y-2">
+            <li><a href="trentino.html" class="text-sm text-slate-400 hover:text-white transition-colors">Trentino Results</a></li>
+            <li><a href="projects.html" class="text-sm text-slate-400 hover:text-white transition-colors">Projects</a></li>
+            <li><a href="team.html" class="text-sm text-slate-400 hover:text-white transition-colors">Team</a></li>
+            <li><a href="publications.html" class="text-sm text-slate-400 hover:text-white transition-colors">Publications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Links</h4>
+          <ul class="space-y-2">
+            <li><a href="https://www.plantsci.cam.ac.uk/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">Plant Sciences, Cambridge</a></li>
+            <li><a href="https://www.cst.cam.ac.uk/" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">Computer Science, Cambridge</a></li>
+            <li><a href="https://github.com/PatBall1/trentino-trees" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-white transition-colors">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-12 pt-8 text-center">
+        <p class="text-xs text-slate-500">&copy; 2025&ndash;2026 University of Cambridge. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
